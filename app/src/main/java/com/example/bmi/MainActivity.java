@@ -1,26 +1,19 @@
 package com.example.bmi;
 
 import android.os.Bundle;
-import android.service.autofill.OnClickAction;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.SeekBar;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import java.text.NumberFormat;
 
 public class MainActivity extends AppCompatActivity {
-    private static final NumberFormat numberFormat =
-            NumberFormat.getNumberInstance();
+    private static final NumberFormat numberFormat = NumberFormat.getNumberInstance();
 
     private double weight = 0.0;
     private double height = 0.15;
@@ -28,24 +21,21 @@ public class MainActivity extends AppCompatActivity {
     private TextView weightTextView;
     private TextView sumBMI;
 
-
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-
-
-        // get references to programmatically manipulated TextViews
-        heightTextView = (TextView) findViewById(R.id.InputHeight);
-        weightTextView = (TextView) findViewById(R.id.InputWeight);
-        sumBMI = (TextView) findViewById(R.id.outputBMI);
+        heightTextView = findViewById(R.id.heightView);
+        weightTextView = findViewById(R.id.weightView);
+        sumBMI = findViewById(R.id.outputBMI);
         sumBMI.setText(numberFormat.format(0));
+
+        EditText heightEditView = findViewById(R.id.InputHeight);
+        heightEditView.addTextChangedListener(HeightEditTextWatcher);
+
+        EditText weightEditView = findViewById(R.id.InputWeight);
+        weightEditView.addTextChangedListener(WeightEditTextWatcher);
 
         final Button buttonBMI = findViewById(R.id.bmibutton);
         buttonBMI.setOnClickListener(new View.OnClickListener() {
@@ -53,60 +43,60 @@ public class MainActivity extends AppCompatActivity {
                 calculate();
             }
         });
-
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
     }
 
-    // calculate and display BMI
     private void calculate() {
-
-
-        double bmi = weight / height;
-
-        sumBMI.setText(numberFormat.format(bmi));
+        if (height != 0) {
+            double meterHeight = height /100;
+            double bmi = weight / (meterHeight * meterHeight);
+            sumBMI.setText(numberFormat.format(bmi));
+        } else {
+            sumBMI.setText(numberFormat.format(0));
+        }
     }
 
-    private final TextWatcher EditTextWatcher = new TextWatcher() {
+    private final TextWatcher HeightEditTextWatcher = new TextWatcher() {
         @Override
-        public void onTextChanged(CharSequence s, int start,
-                                  int before, int count) {
-
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
             try {
-
-                weight = Double.parseDouble(s.toString());
                 height = Double.parseDouble(s.toString());
-                if(weight >= 0 && height >0 )
-                {
-
-                    heightTextView.setText(numberFormat.format(height));
-
-                }}
-            catch (NumberFormatException e) { // if s is empty or non-numeric
-                weightTextView.setText("");
+                heightTextView.setText(numberFormat.format(height));
+            } catch (NumberFormatException e) {
                 heightTextView.setText("");
-                sumBMI.setText(numberFormat.format("0")); ;
+                sumBMI.setText("Invalid input for height");
             }
-
             calculate();
         }
 
+        @Override
+        public void afterTextChanged(Editable s) {
+        }
 
         @Override
-        public void afterTextChanged(Editable s) { }
-
-        @Override
-        public void beforeTextChanged(
-                CharSequence s, int start, int count, int after) { }
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
     };
 
+    private final TextWatcher WeightEditTextWatcher = new TextWatcher() {
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            try {
+                weight = Double.parseDouble(s.toString());
+                weightTextView.setText(numberFormat.format(weight));
+            } catch (NumberFormatException e) {
+                weightTextView.setText("");
+                sumBMI.setText("Invalid input for weight");
+            }
+            calculate();
+        }
 
+        @Override
+        public void afterTextChanged(Editable s) {
+        }
 
-
-
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
+    };
 
 }
