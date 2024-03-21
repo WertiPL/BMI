@@ -1,3 +1,5 @@
+// Author s23141 Wiktor Rostkowski
+
 package com.example.bmi;
 
 import android.os.Bundle;
