@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.bmiplus.databinding.FragmentItemBinding;
 import com.example.bmiplus.placeholder.PlaceholderContent.PlaceholderItem;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,9 +18,9 @@ import java.util.List;
  */
 public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecyclerViewAdapter.ViewHolder> {
 
-    private final List<PlaceholderItem> mValues;
+    private final List<recipe> mValues;
 
-    public MyItemRecyclerViewAdapter(List<PlaceholderItem> items) {
+    public MyItemRecyclerViewAdapter(ArrayList<recipe> items) {
         mValues = items;
     }
 
@@ -33,10 +34,9 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mNameView.setText(mValues.get(position).content);
-        holder.mIngredientsView.setText(mValues.get(position).content);
-        holder.mDescriptionView.setText(mValues.get(position).content);
+        holder.mDescriptionView.setText(mValues.get(position).description);
+        holder.mNameView.setText(mValues.get(position).name);
+        holder.mIngredientsView.setText(mValues.get(position).ingredients);
     }
 
     @Override
@@ -45,16 +45,14 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public final TextView mIdView;
 
         public final TextView mNameView;
         public final TextView mIngredientsView;
         public final TextView mDescriptionView;
-        public PlaceholderItem mItem;
+        public recipe mItem;
 
         public ViewHolder(FragmentItemBinding binding) {
             super(binding.getRoot());
-            mIdView = binding.itemNumber;
             mNameView = binding.name;
             mIngredientsView = binding.ingredientsall;
             mDescriptionView = binding.recipedescription;
@@ -62,7 +60,7 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
 
         @Override
         public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
+            return super.toString() + " '" + mNameView.getText() + "'";
         }
     }
 }
