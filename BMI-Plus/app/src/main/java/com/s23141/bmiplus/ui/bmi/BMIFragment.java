@@ -1,4 +1,4 @@
-package com.example.bmiplus.ui.bmi;
+package com.s23141.bmiplus.ui.bmi;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -16,8 +16,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.bmiplus.databinding.FragmentBmiBinding;
-import com.example.bmiplus.ui.Calories.CaloriesViewModel;
+import com.s23141.bmiplus.databinding.FragmentBmiBinding;
+import com.s23141.bmiplus.ui.Calories.CaloriesViewModel;
 
 import java.text.NumberFormat;
 
@@ -36,7 +36,7 @@ public class BMIFragment extends Fragment {
         BMIViewModel bmiViewModel =
                 new ViewModelProvider(this).get(BMIViewModel.class);
 
-        binding = com.example.bmiplus.databinding.FragmentBmiBinding.inflate(inflater, container, false);
+        binding = com.s23141.bmiplus.databinding.FragmentBmiBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         EditText heightEditView = binding.InputHeight;
         EditText weightEditView = binding.InputWeight;

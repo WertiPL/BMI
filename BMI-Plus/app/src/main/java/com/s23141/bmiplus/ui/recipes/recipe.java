@@ -1,4 +1,4 @@
-package com.example.bmiplus.ui.recipes;
+package com.s23141.bmiplus.ui.recipes;
 
 public class recipe {
     public recipe(String name, String description,String ingredients) {

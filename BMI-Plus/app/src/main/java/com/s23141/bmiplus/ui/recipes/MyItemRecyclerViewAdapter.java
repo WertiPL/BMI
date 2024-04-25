@@ -1,4 +1,4 @@
-package com.example.bmiplus.ui.recipes;
+package com.s23141.bmiplus.ui.recipes;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -6,8 +6,8 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.bmiplus.databinding.FragmentItemBinding;
-import com.example.bmiplus.placeholder.PlaceholderContent.PlaceholderItem;
+import com.s23141.bmiplus.databinding.FragmentItemBinding;
+import com.s23141.bmiplus.placeholder.PlaceholderContent.PlaceholderItem;
 
 import java.util.ArrayList;
 import java.util.List;

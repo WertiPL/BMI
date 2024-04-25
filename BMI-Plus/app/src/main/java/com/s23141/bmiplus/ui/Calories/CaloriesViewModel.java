@@ -1,24 +1,23 @@
-package com.example.bmiplus.ui.bmi;
+package com.s23141.bmiplus.ui.Calories;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class BMIViewModel extends ViewModel {
-
+public class CaloriesViewModel extends ViewModel {
 
     private final MutableLiveData<Double> height;
     private final MutableLiveData<Double> weight;
-    private final MutableLiveData<String> bmi;
+    private final MutableLiveData<Boolean> gender;
     private final MutableLiveData<String> mText;
-    public BMIViewModel() {
+
+    public CaloriesViewModel() {
         height = new MutableLiveData<>(0.0);
         weight = new MutableLiveData<>(0.0);
-        bmi = new MutableLiveData<>();
+        gender = new MutableLiveData<>();
         mText = new MutableLiveData<>();
-        mText.setValue("This is BMI fragment");
+        mText.setValue("Wzór Harrisa Benedicta Obliczanie zapotrzebowania kcal");
     }
-
     public double getHeight() {
         return height.getValue() != null ? height.getValue() : 0.0;
     }
@@ -30,5 +29,4 @@ public class BMIViewModel extends ViewModel {
     public LiveData<String> getText() {
         return mText;
     }
-
 }

@@ -1,4 +1,4 @@
-package com.example.bmiplus.ui.Calories;
+package com.s23141.bmiplus.ui.Calories;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -16,8 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.bmiplus.R;
-import com.example.bmiplus.databinding.FragmentCaloriesBinding;
+import com.s23141.bmiplus.R;
+import com.s23141.bmiplus.databinding.FragmentCaloriesBinding;
 
 public class CaloriesFragment extends Fragment {
 

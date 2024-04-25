@@ -1,4 +1,4 @@
-package com.example.bmiplus;
+package com.s23141.bmiplus;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,9 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.bmiplus.placeholder.PlaceholderContent;
-import com.example.bmiplus.ui.recipes.MyItemRecyclerViewAdapter;
-import com.example.bmiplus.ui.recipes.recipe;
+import com.s23141.bmiplus.placeholder.PlaceholderContent;
+import com.s23141.bmiplus.ui.recipes.MyItemRecyclerViewAdapter;
+import com.s23141.bmiplus.ui.recipes.recipe;
 
 import java.util.ArrayList;
 

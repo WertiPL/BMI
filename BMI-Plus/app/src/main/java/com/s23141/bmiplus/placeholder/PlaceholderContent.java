@@ -1,4 +1,4 @@
-package com.example.bmiplus.placeholder;
+package com.s23141.bmiplus.placeholder;
 
 import java.util.ArrayList;
 import java.util.HashMap;

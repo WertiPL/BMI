@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.bmiplus.ui.Calories.CaloriesFragment"
+        android:name="com.s23141.bmiplus.ui.Calories.CaloriesFragment"
         android:label="@string/title_calories"
         tools:layout="@layout/fragment_calories" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.bmiplus.ui.bmi.BMIFragment"
+        android:name="com.s23141.bmiplus.ui.bmi.BMIFragment"
         android:label="@string/title_bmi"
         tools:layout="@layout/fragment_bmi" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.example.bmiplus.ItemFragment"
+        android:name="com.s23141.bmiplus.ItemFragment"
         android:label="@string/title_recipes"
         tools:layout="@layout/fragment_item_list" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.example.bmiplus.ui.recipes;
+package com.s23141.bmiplus.ui.recipes;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.bmiplus.databinding.FragmentRecipesBinding;
+import com.s23141.bmiplus.databinding.FragmentRecipesBinding;
 
 import java.util.ArrayList;
 import java.util.List;
