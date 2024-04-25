@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">BMIPlus</string>
+    <string name="title_calories">Calc Calories</string>
+    <string name="title_bmi">Calc BMI</string>
+    <string name="title_recipes">Recipes</string>
+    <string name="input_your_weight_kg">Input your Weight KG</string>
+    <string name="me_czyzna">Meżczyzna</string>
+    <string name="kobieta">Kobieta</string>
+    <string name="input_your_height_cm">Input your Height CM</string>
+    <string name="harrisa_benedicta_obliczanie_zapotrzebowania_kcal">Harrisa Benedicta – obliczanie zapotrzebowania kcal</string>
+    <string name="input_your_age">Input your Age</string>
+    <string name="calc">Calc</string>
+    <string name="title_activity_recipe">Recipe</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+</resources>
