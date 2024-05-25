@@ -12,17 +12,21 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.s23141.bmiplus.ui.recipes.MyItemRecyclerViewAdapter;
+import com.s23141.bmiplus.ui.recipes.ShoppingAdapterRecyclerViewAdapter;
 import com.s23141.bmiplus.ui.recipes.recipe;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class ItemFragment extends Fragment {
 
 
+
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
-
+    private ShoppingAdapterRecyclerViewAdapter shoppingAdapter;
+    private List<String> shoppingList = new ArrayList<>();
 
     public ItemFragment() {
     }
@@ -39,11 +43,11 @@ public class ItemFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -123,20 +127,27 @@ public class ItemFragment extends Fragment {
                 "    musztarda"));
 
 
-        // Set the adapter
-        if (view instanceof RecyclerView) {
-            Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
-            if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
-            }
-            recyclerView.setAdapter(new MyItemRecyclerViewAdapter(recipes));
-        }
+        // Recipe RecyclerView
+        RecyclerView recipeRecyclerView = view.findViewById(R.id.recipe_list);
+        Context context = view.getContext();
+        recipeRecyclerView.setLayoutManager(new LinearLayoutManager(context));
+        MyItemRecyclerViewAdapter recipeAdapter = new MyItemRecyclerViewAdapter(recipes, this::addIngredientsToShoppingList);
+        recipeRecyclerView.setAdapter(recipeAdapter);
+
+        // Shopping RecyclerView
+        RecyclerView shoppingRecyclerView = view.findViewById(R.id.shopping_list);
+        shoppingRecyclerView.setLayoutManager(new LinearLayoutManager(context));
+        shoppingAdapter = new ShoppingAdapterRecyclerViewAdapter(shoppingList);
+        shoppingRecyclerView.setAdapter(shoppingAdapter);
+
         return view;
     }
 
-
-
+    private void addIngredientsToShoppingList(List<String> ingredients) {
+        shoppingList.addAll(ingredients);
+        shoppingAdapter.notifyDataSetChanged();
+    }
 }
+
+
+
