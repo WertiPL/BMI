@@ -39,7 +39,13 @@
                 android:textColor="@color/teal_700"
                 android:textSize="14sp"
                 android:textStyle="bold" />
-
+            <Button
+                android:id="@+id/add_ingredient_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dodaj"
+                android:layout_marginStart="8dp"
+                    />
         </LinearLayout>
 
 

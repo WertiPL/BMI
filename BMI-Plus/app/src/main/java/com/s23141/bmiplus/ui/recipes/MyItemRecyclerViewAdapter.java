@@ -2,20 +2,18 @@ package com.s23141.bmiplus.ui.recipes;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.s23141.bmiplus.databinding.FragmentItemBinding;
-import com.s23141.bmiplus.placeholder.PlaceholderContent.PlaceholderItem;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link PlaceholderItem}.
- * TODO: Replace the implementation with code for your data type.
- */
+
 public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecyclerViewAdapter.ViewHolder> {
 
     private final List<recipe> mValues;
@@ -23,6 +21,7 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
     public MyItemRecyclerViewAdapter(ArrayList<recipe> items) {
         mValues = items;
     }
+
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -37,6 +36,15 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
         holder.mDescriptionView.setText(mValues.get(position).description);
         holder.mNameView.setText(mValues.get(position).name);
         holder.mIngredientsView.setText(mValues.get(position).ingredients);
+        holder.mAddButton.setTag(position);
+        holder.mAddButton.setOnClickListener(v -> {
+            int pos = (int) v.getTag();
+            recipe selectedRecipe = mValues.get(pos);
+
+            List<String> ingredientsList = Arrays.asList(selectedRecipe.ingredients.split("\\r?\\n"));
+            RecyclerView recyclerView = (RecyclerView) v.getParent();
+            recyclerView.setAdapter(new ShoppingAdapterRecyclerViewAdapter(ingredientsList));
+        });
     }
 
     @Override
@@ -50,12 +58,14 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
         public final TextView mIngredientsView;
         public final TextView mDescriptionView;
         public recipe mItem;
+        public final Button mAddButton;
 
         public ViewHolder(FragmentItemBinding binding) {
             super(binding.getRoot());
             mNameView = binding.name;
             mIngredientsView = binding.ingredientsall;
             mDescriptionView = binding.recipedescription;
+            mAddButton = binding.addIngredientButton;
         }
 
         @Override
@@ -63,4 +73,5 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
             return super.toString() + " '" + mNameView.getText() + "'";
         }
     }
+
 }

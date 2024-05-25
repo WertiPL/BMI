@@ -2,40 +2,31 @@ package com.s23141.bmiplus;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import com.s23141.bmiplus.placeholder.PlaceholderContent;
 import com.s23141.bmiplus.ui.recipes.MyItemRecyclerViewAdapter;
 import com.s23141.bmiplus.ui.recipes.recipe;
 
 import java.util.ArrayList;
 
-/**
- * A fragment representing a list of Items.
- */
+
 public class ItemFragment extends Fragment {
 
-    // TODO: Customize parameter argument names
+
     private static final String ARG_COLUMN_COUNT = "column-count";
-    // TODO: Customize parameters
     private int mColumnCount = 1;
 
-    /**
-     * Mandatory empty constructor for the fragment manager to instantiate the
-     * fragment (e.g. upon screen orientation changes).
-     */
+
     public ItemFragment() {
     }
 
-    // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
     public static ItemFragment newInstance(int columnCount) {
         ItemFragment fragment = new ItemFragment();
@@ -108,6 +99,30 @@ public class ItemFragment extends Fragment {
                 "    pieprz\n" +
                 "    miód\n" +
                 "    musztarda"));
+        recipes.add(2,new recipe("Filet pieczony w rękawie z ziemniakami i marchewką","1\n" +
+                "\n" +
+                "Ziemniaki, marchewkę i cebulę obieramy i kroimy na mniejsze kawałki. Jeżeli ziemniaki są małe pozostawiamy je w całości. Warzywa polewamy oliwą i doprawiamy solą, pieprzem i rozmarynem.\n" +
+                "2\n" +
+                "\n" +
+                "W misce łączymy dwie łyżki musztardy, dwie łyżki miodu, 100ml oliwy, łyżeczkę soli, łyżeczkę pieprzu i dwie łyżeczki słodkiej papryki w proszku.\n" +
+                "W przygotowanej marynacie umieszczamy filety z kurczaka i marynujemy w lodówce  przez kilka godzin.\n" +
+                "3\n" +
+                "\n" +
+                "W rękawie kuchennym umieszczamy warzywa i mięso. Po zawiązaniu rękawa robimy w nim nożem  kilka dziurek.\n" +
+                "Pieczemy przez godzinę w 180 stopniach.\n" +
+                "Smacznego!","    1 kg ziemniaków\n" +
+                "    1 kg marchewki\n" +
+                "    3 cebule\n" +
+                "    4 filety z piersi kurczaka\n" +
+                "    oliwa\n" +
+                "    rozmaryn\n" +
+                "    słodka papryka w proszku\n" +
+                "    sól\n" +
+                "    pieprz\n" +
+                "    miód\n" +
+                "    musztarda"));
+
+
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
@@ -121,4 +136,7 @@ public class ItemFragment extends Fragment {
         }
         return view;
     }
+
+
+
 }
